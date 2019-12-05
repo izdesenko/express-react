@@ -20,6 +20,7 @@
     "mocha": "^6.2.2"
   },
   "scripts": {
+    "postinstall": "cd front && npm i",
     "build-front": "npm run build --prefix front",
     "dev": "ts-node-dev --respawn --transpileOnly ./app/app.ts",
     "build-all": "npm run build-front && tsc",
