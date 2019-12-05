@@ -1,6 +1,7 @@
 import mongoose from 'mongoose';
 const uri = 'mongodb://localhost/score';
 
+mongoose.set('useCreateIndex', true);
 mongoose.connect(uri, {
   useNewUrlParser: true,
   useUnifiedTopology: true

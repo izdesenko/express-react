@@ -12,6 +12,7 @@ export const ProfileSchema = new Schema({
 
 ProfileSchema.index({id: 1}, {unique: 1});
 ProfileSchema.index({email: 1}, {unique: 1});
+ProfileSchema.index({first_name: 1, last_name: 1});
 
 ProfileSchema.statics.findByName = async function(name: string): Promise<IProfileDocument[]> {
   let query: {$or?: any[]} = {};

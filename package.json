@@ -24,7 +24,7 @@
     "build-front": "npm run build --prefix front",
     "dev": "ts-node-dev --respawn --transpileOnly ./app/app.ts",
     "build-all": "npm run build-front && tsc",
-    "prod": "node ./build/app.js",
+    "prod": "node ./build/app/app.js",
     "build": "tsc"
   },
   "author": "",
