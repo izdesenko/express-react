@@ -6,7 +6,7 @@ import { spawn } from 'child_process';
 import {ProfileModel} from './model';
 
 const app: express.Application = express();
-const frontDir: string = path.resolve(__dirname, '..', 'front', 'build');
+const frontDir: string = path.resolve(__dirname, '..', '..', 'front', 'build');
 
 app.use(cors());
 app.use(express.static(frontDir));
@@ -23,8 +23,9 @@ app.listen(3200, function () {
 });
 
 const loadProfiles = function (): void {
-  // console.log(__dirname, 'SPAWN');
-  const cp = spawn('node', [path.resolve(__dirname, '..', 'scripts', 'load_profiles.js')]);
+  const spath = path.resolve(__dirname, '..', 'scripts', 'load_profiles.js');
+  console.log(spath, 'SPAWN');
+  const cp = spawn('node', [spath]);
 
   cp.stdout.on('data', data => console.log(`Spawn data: ${data}`))
   cp.stderr.on('data', data => console.log(`Spawn error1: ${data}`))

@@ -4,7 +4,6 @@ import React, { Component } from 'react';
 class App extends Component {
   state = {
     name: null,
-    page: 0,
     profiles: []
   };
 
@@ -15,16 +14,12 @@ class App extends Component {
 
   getProfilesFromDb() {
     const url = new URL('http://localhost:3200/q');
-    const {name, page} = this.state;
+    const {name} = this.state;
 
     console.log('Search profiles', name);
     
     if (name) {
       url.searchParams.set('name', name);
-    }
-
-    if (page) {
-      url.searchParams.set('page', page);
     }
 
     fetch(url)

@@ -17,8 +17,8 @@ ProfileSchema.index({first_name: 1, last_name: 1});
 ProfileSchema.statics.findByName = async function(name: string): Promise<IProfileDocument[]> {
   let query: {$or?: any[]} = {};
   if (name) {
-    const qname = new RegExp(`^${name.toLowerCase()}`, 'i');
-    query.$or = [{first_name: qname}, {last_name: qname}];
+    const qname = name.split(/\s+/).map((word: string) => new RegExp(`^${word.toLowerCase()}`, 'i'));
+    query.$or = [{first_name: {$in: qname}}, {last_name: {$in: qname}}];
   }
 
   return await ProfileModel.find(query);
